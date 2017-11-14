@@ -36,6 +36,7 @@ import com.example.android.sunshine.data.SunshinePreferences;
 import com.example.android.sunshine.utilities.NetworkUtils;
 import com.example.android.sunshine.utilities.OpenWeatherJsonUtils;
 
+import java.net.URI;
 import java.net.URL;
 
 public class MainActivity extends AppCompatActivity implements ForecastAdapterOnClickHandler {
@@ -221,8 +222,18 @@ public class MainActivity extends AppCompatActivity implements ForecastAdapterOn
             return true;
         }
 
-        // TODO (2) Launch the map when the map menu item is clicked
-
+        // Completed (2) Launch the map when the map menu item is clicked
+        if (id == R.id.action_view_map) {
+            Uri mapUri = new Uri.Builder().scheme("geo").path("0,0").build();
+            showMap(mapUri);
+        }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void showMap(Uri mapUri){
+        Intent intent = new Intent(Intent.ACTION_VIEW,mapUri);
+        if (intent.resolveActivity(getPackageManager()) != null){
+            startActivity(intent);
+        }
     }
 }
