@@ -174,11 +174,13 @@ public class MainActivity extends AppCompatActivity implements ForecastAdapterOn
             String[] mWeatherData = null;
             @Override
             protected void onStartLoading() {
-                if (mWeatherData == null){
+                if (mWeatherData != null){
                     deliverResult(mWeatherData);
                 }
-                mLoadingIndicator.setVisibility(View.VISIBLE);
-                forceLoad();
+                else {
+                    mLoadingIndicator.setVisibility(View.VISIBLE);
+                    forceLoad();
+                }
             }
 
             @Override
