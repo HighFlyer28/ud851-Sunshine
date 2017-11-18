@@ -33,7 +33,7 @@ public class WeatherDbHelper extends SQLiteOpenHelper {
      * This is the name of our database. Database names should be descriptive and end with the
      * .db extension.
      */
-    public static final String DATABASE_NAME = "weather.db";
+    public final static  String DATABASE_NAME = "weather.db";
 
 //  COMPLETED (13) Create a private static final int called DATABASE_VERSION and set it to 1
     /*
@@ -47,7 +47,7 @@ public class WeatherDbHelper extends SQLiteOpenHelper {
      * use-case, we wanted to watch out for it and warn you what could happen if you mistakenly
      * version your databases.
      */
-    private static final int DATABASE_VERSION = 1;
+    public final static  int DATABASE_VERSION = 1;
 
 //  COMPLETED (14) Create a constructor that accepts a context and call through to the superclass constructor
     public WeatherDbHelper(Context context) {
