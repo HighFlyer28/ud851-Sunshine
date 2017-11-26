@@ -262,15 +262,17 @@ public class MainActivity extends AppCompatActivity implements
     /**
      * This method is for responding to clicks from our list.
      *
-     * @param weatherForDay String describing weather details for a particular day
+     * @param date Long describing weather details for a particular day
      */
     @Override
-    public void onClick(String weatherForDay) {
+    public void onClick(Long date) {
 //      TODO (39) Refactor onClick to build a URI for the clicked date and and pass it with the Intent using setData
+
         Context context = this;
         Class destinationClass = DetailActivity.class;
         Intent intentToStartDetailActivity = new Intent(context, destinationClass);
-        intentToStartDetailActivity.putExtra(Intent.EXTRA_TEXT, weatherForDay);
+        Uri uriForDate = WeatherContract.WeatherEntry.buildWeatherUriWithDate(date);
+        intentToStartDetailActivity.setData(uriForDate);
         startActivity(intentToStartDetailActivity);
     }
 
